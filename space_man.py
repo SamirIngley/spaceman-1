@@ -90,7 +90,7 @@ def spaceman(secret_word):
 
     print("The secret word has:", length, "letters")
 
-
+    print("You have 7 tries to guess the correct letters")
 
 
 # TODO: Ask the player to guess one letter per round and check that it is only one letter
@@ -104,15 +104,13 @@ def spaceman(secret_word):
         while len(letter) != 1 or letter in letters_guessed:
             letter = input("Please only enter one letter at a time, or enter a new letter:  ")
 
-        letters_guessed += letter
+            letters_guessed += letter
         # TODO: Check if the guessed letter is in the secret or not and give the player feedback
         if is_guess_in_word(letter, secret_word):
             print("That letter is correct!")
         else:
             print("Try again!")
             num_guesses += 1
-
-
         # lists the incorrect words so far
         print("The incorrect letters so far are: ", get_wrong_letters(letters_guessed, secret_word))
 
@@ -130,8 +128,8 @@ def spaceman(secret_word):
                 spaceman(secret_word)
             else:
                 running = False
-        #so the player can guess as many times as the # characters in the secret word        
-        if num_guesses >= len(secret_word):
+
+        if num_guesses >= 7:
             print("Thank you for playing!")
             print("The secret word was", (secret_word))
             again = input("Do you want to play again?(y/n)")
